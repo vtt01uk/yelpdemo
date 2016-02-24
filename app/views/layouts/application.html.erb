@@ -10,10 +10,12 @@
     
 </head>
 <body>
-
-    <%= render 'layouts/navbar' %>
+<%= render 'layouts/navbar' %>
+ 
+  <div class="container-fluid">
     <%= yield %>
     <%= render 'layouts/footer'%>
+  </div>
 
 </body>
 </html>
