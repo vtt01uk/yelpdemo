@@ -3,4 +3,8 @@ class Reviewer < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  # Association; a reviewer can have many reviews.
+    #if reviewer is removed, so will associated reviews
+    has_many :reviews, dependent: :destroy
+    
 end

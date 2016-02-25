@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  #authenticate user and force them to sign in if they want to write a review
+    before_action :authenticate_reviewer!
 
   # GET /reviews
   # GET /reviews.json
@@ -25,6 +27,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+      @review.reviewer_id = current_reviewer.id
 
     respond_to do |format|
       if @review.save
