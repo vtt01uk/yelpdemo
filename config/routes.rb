@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :reviews
+  
   devise_for :reviewers
-  resources :restaurants
+    
+  resources :restaurants do
+      #creates the necessary pages #nesting
+    resources :reviews, except: [:show, :index]
+  end
+
   get 'pages/about'
 
   get 'pages/contact'

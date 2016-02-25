@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :set_restaurant
   #authenticate user and force them to sign in if they want to write a review
   before_action :authenticate_reviewer!
 
@@ -16,10 +17,12 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-      @review.reviewer_id = current_reviewer.id
+    @review.reviewer_id = current_reviewer.id
+      @review.reviewer_id = @restaurant.id
 
     respond_to do |format|
       if @review.save
+          #Once the review is saved, redirect the reviewer to the root path
         format.html { redirect_to root_path, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
@@ -57,6 +60,11 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
+    end
+    
+    def set_restaurant
+        #finds the right restaurant
+        @restaurant = Restaurant.find(params[:restaurant_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
