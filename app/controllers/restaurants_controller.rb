@@ -12,6 +12,12 @@ class RestaurantsController < ApplicationController
   def show
       #only see the views relateed to the restaurant id
       @reviews = Review.where(restaurant_id: @restaurant.id)
+      if @reviews.blank?
+          @avg_rating = 0
+      else
+          #grab all the ratings and round the figure to 2 decimal places
+          @avg_rating = @reviews.average(:rating).round(2)
+      end
   end
 
   # GET /restaurants/new

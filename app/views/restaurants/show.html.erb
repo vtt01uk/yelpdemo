@@ -10,6 +10,9 @@
      <%= @restaurant.name %>
     </h2>
     
+    <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+<!--  String interpolation;-->
+       <p><%= "#{@reviews.length} reviews" %></p>
     <p>
       <strong>Address:</strong>
       <%= @restaurant.address %>
