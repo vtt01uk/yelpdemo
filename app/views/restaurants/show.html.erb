@@ -35,11 +35,19 @@
       <% if @reviews.blank? %>
         <h3>No reviews yet. Be the first to write one!</h3>
       <% else %>
-         <!--Cycle through each through each of the reviews and displays the rating and comments--> 
-          <% @reviews.each do |review| %>
-        <div class="star-rating" data-score= <%= review.rating %> ></div>
-            <p><%= review.comment %></p>
-          <% end %>  
+        <table class="table">
+          <tbody>
+            <!--Cycle through each through each of the reviews and displays the rating and comments--> 
+            <% @reviews.each do |review| %>
+            <tr>
+              <td>
+                <div class="star-rating" data-score= <%= review.rating %> ></div>
+                <p><%= review.comment %></p> 
+                </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       <% end %>
     </div> 
 </div>
