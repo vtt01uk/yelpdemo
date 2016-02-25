@@ -24,5 +24,12 @@
 </p>
 
 <%= link_to 'Write a review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+
+<!--Cycle through each through each of the reviews and displays the rating and comments-->
+<% @reviews.each do |review| %>
+<p><%= review.rating %></p>
+<p><%= review.comment %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-link"  %> |
 <%= link_to 'Back', restaurants_path, class: "btn btn-link"  %>
