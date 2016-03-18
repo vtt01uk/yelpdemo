@@ -4,5 +4,5 @@
 This is one of the sample applications for Baserails; a platform that teaches people to build awesome custom websites with the Ruby on Rails programming language.
 
 ---
-https://yelpdem0.herokuapp.com
+https://yelpdem0.herokuapp.com (deactivated on 03.18.16)
 
